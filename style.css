@@ -1,12 +1,12 @@
-/* =========================================
+/* =========================================================
    DRAGONX ROLEPLAY
    MAIN STYLE SHEET
-   ========================================= */
+   ========================================================= */
 
 
-/* =========================================
+/* =========================================================
    RESET
-   ========================================= */
+   ========================================================= */
 
 * {
     margin: 0;
@@ -20,70 +20,84 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: #ffffff;
-    background:
-        radial-gradient(circle at 50% 35%, rgba(255, 70, 0, 0.16), transparent 35%),
-        linear-gradient(135deg, #070707, #120604, #050505);
-    overflow-x: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-body.page-loaded {
-    opacity: 1;
-}
-
-body.page-exit {
-    opacity: 0;
-}
-
-
-/* =========================================
-   GLOBAL BACKGROUND
-   ========================================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
 
     background:
         radial-gradient(
-            circle at 20% 20%,
-            rgba(255, 70, 0, 0.08),
-            transparent 30%
+            circle at 50% 35%,
+            rgba(255, 65, 0, 0.18),
+            transparent 38%
         ),
         radial-gradient(
-            circle at 80% 70%,
-            rgba(255, 0, 0, 0.07),
-            transparent 30%
+            circle at 85% 80%,
+            rgba(180, 25, 0, 0.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050505 0%,
+            #100403 50%,
+            #050505 100%
         );
+
+    overflow-x: hidden;
 }
 
 
-/* =========================================
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background: #ff3d00;
+    color: #ffffff;
+}
+
+
+/* =========================================================
    NAVBAR
-   ========================================= */
+   ========================================================= */
 
 .navbar {
     position: fixed;
+
     top: 0;
     left: 0;
 
     width: 100%;
-    min-height: 78px;
+    height: 66px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 10px 35px;
+    padding: 0 22px 0 30px;
 
-    background: rgba(5, 5, 5, 0.88);
-    border-bottom: 1px solid rgba(255, 70, 0, 0.35);
+    background: rgba(5, 5, 5, 0.94);
+
+    border-bottom:
+        1px solid rgba(255, 55, 0, 0.35);
 
     backdrop-filter: blur(12px);
 
@@ -95,214 +109,300 @@ body::before {
 }
 
 .navbar.scrolled {
-    background: rgba(3, 3, 3, 0.97);
+    background: rgba(3, 3, 3, 0.98);
 
     box-shadow:
-        0 5px 30px rgba(255, 50, 0, 0.15);
+        0 5px 30px rgba(0, 0, 0, 0.45);
 }
 
 
-/* =========================================
+/* =========================================================
    BRAND
-   ========================================= */
+   ========================================================= */
 
 .brand {
     display: flex;
-    align-items: center;
-    gap: 12px;
 
-    color: white;
-    text-decoration: none;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+
+    color: #ffffff;
 
     font-size: 17px;
     font-weight: 900;
+
     letter-spacing: 1.5px;
+
+    white-space: nowrap;
 }
 
 .brand img {
-    width: 52px;
-    height: 52px;
+    width: 46px;
+    height: 46px;
+
+    display: block;
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 0 7px rgba(255, 60, 0, 0.7));
+    flex-shrink: 0;
 
-    transition: transform 0.3s ease;
+    filter:
+        drop-shadow(
+            0 0 7px rgba(255, 60, 0, 0.75)
+        );
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
 .brand:hover img {
-    transform: rotate(-4deg) scale(1.08);
+    transform: scale(1.08) rotate(-2deg);
+
+    filter:
+        drop-shadow(
+            0 0 13px rgba(255, 70, 0, 0.95)
+        );
 }
 
 
-/* =========================================
-   NAVIGATION LINKS
-   ========================================= */
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
 
 .nav-links {
     display: flex;
+
     align-items: center;
-    gap: 7px;
+
+    gap: 8px;
+
+    height: 100%;
 }
 
-.nav-links a {
+.nav-links > a {
     position: relative;
 
-    padding: 11px 14px;
+    display: flex;
 
-    color: #eeeeee;
-    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    padding: 0 17px;
+
+    color: #dddddd;
 
     font-size: 13px;
     font-weight: 800;
-    letter-spacing: 0.7px;
+
+    letter-spacing: 0.8px;
 
     transition:
         color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+        background 0.25s ease;
 }
 
-.nav-links a::after {
+.nav-links > a:hover {
+    color: #ff4a12;
+}
+
+.nav-links > a::after {
     content: "";
 
     position: absolute;
 
-    left: 14px;
-    right: 14px;
-    bottom: 5px;
+    left: 17px;
+    right: 17px;
+
+    bottom: 0;
 
     height: 2px;
 
-    background: linear-gradient(
-        90deg,
-        #ff2600,
-        #ff7300
-    );
+    background: #ff3d00;
 
     transform: scaleX(0);
+
     transform-origin: center;
 
-    transition: transform 0.25s ease;
+    transition:
+        transform 0.25s ease;
 }
 
-.nav-links a:hover {
-    color: #ff6a00;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
+.nav-links > a:hover::after,
+.nav-links > a.active::after {
     transform: scaleX(1);
 }
 
-.nav-links a.active {
-    color: #ff5a00;
+.nav-links > a.active {
+    color: #ff4a12;
 }
 
 
-/* =========================================
+/* =========================================================
    DISCORD NAV BUTTON
-   ========================================= */
+   ========================================================= */
 
 .discord-nav {
-    margin-left: 7px;
+    margin-left: 5px;
 
-    border: 1px solid #ff4b00;
+    height: 43px !important;
+
+    padding: 0 17px !important;
+
+    border: 1px solid #ff480e;
+
     border-radius: 7px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255, 60, 0, 0.2),
-            rgba(180, 0, 0, 0.12)
+            rgba(255, 65, 0, 0.12),
+            rgba(120, 15, 0, 0.12)
         );
 
+    color: #ffffff !important;
+
     box-shadow:
-        0 0 12px rgba(255, 50, 0, 0.15);
+        0 0 0 rgba(255, 60, 0, 0);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease !important;
 }
 
 .discord-nav::after {
-    display: none;
+    display: none !important;
 }
 
 .discord-nav:hover {
-    color: white !important;
-
     background:
         linear-gradient(
             135deg,
-            #ff4b00,
-            #c90000
+            #ff4a0b,
+            #c51e00
         );
 
-    transform: translateY(-2px);
+    color: #ffffff !important;
 
     box-shadow:
-        0 0 20px rgba(255, 60, 0, 0.4);
+        0 0 18px rgba(255, 60, 0, 0.35);
+
+    transform: translateY(-1px);
 }
 
 
-/* =========================================
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.mobile-menu-button {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255, 65, 0, 0.6);
+
+    border-radius: 7px;
+
+    background: #120705;
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.mobile-menu-button:hover,
+.mobile-menu-button.active {
+    background: #e72e00;
+}
+
+
+/* =========================================================
    HOME
-   ========================================= */
+   ========================================================= */
 
 .home {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 120px 25px 80px;
-
-    text-align: center;
-
     position: relative;
+
+    padding:
+        110px
+        30px
+        90px;
 }
 
 .home::before {
     content: "";
 
     position: absolute;
-    inset: 0;
+
+    inset: 66px 0 0;
+
+    pointer-events: none;
 
     background:
         radial-gradient(
             ellipse at center,
-            rgba(255, 60, 0, 0.13),
+            rgba(255, 60, 0, 0.12),
             transparent 55%
         );
-
-    pointer-events: none;
 }
 
 .home-content {
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
+
+    width: min(1100px, 100%);
 
     display: flex;
+
     align-items: center;
+    justify-content: center;
+
     flex-direction: column;
+
+    text-align: center;
 }
 
 
-/* =========================================
+/* =========================================================
    HOME LOGO
-   ========================================= */
+   ========================================================= */
 
 .home-logo {
-    width: min(390px, 75vw);
-
-    max-height: 390px;
+    width: 180px;
+    height: 180px;
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 0 15px rgba(255, 50, 0, 0.55))
-        drop-shadow(0 0 45px rgba(255, 30, 0, 0.2));
+    margin-bottom: 20px;
 
-    animation: logoFloat 4s ease-in-out infinite;
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255, 55, 0, 0.7)
+        );
+
+    animation:
+        logoFloat 4s ease-in-out infinite,
+        logoGlow 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes logoFloat {
@@ -313,164 +413,188 @@ body::before {
     }
 
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes logoGlow {
+
+    from {
+        filter:
+            drop-shadow(
+                0 0 8px rgba(255, 55, 0, 0.55)
+            );
+    }
+
+    to {
+        filter:
+            drop-shadow(
+                0 0 23px rgba(255, 55, 0, 0.9)
+            );
     }
 }
 
 
-/* =========================================
+/* =========================================================
    WELCOME TEXT
-   ========================================= */
+   ========================================================= */
 
 .welcome-text {
-    margin-top: 10px;
+    min-height: 78px;
 
-    min-height: 58px;
+    max-width: 100%;
 
-    color: white;
+    color: #ffffff;
 
-    font-size: clamp(27px, 5vw, 55px);
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            61px
+        );
+
+    line-height: 1.15;
+
     font-weight: 950;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
 
     text-shadow:
-        0 0 8px rgba(255, 70, 0, 0.8),
-        0 0 25px rgba(255, 30, 0, 0.45);
+        0 0 8px rgba(255, 60, 0, 0.85),
+        0 0 25px rgba(255, 45, 0, 0.42);
+
+    word-break: break-word;
 }
 
-#welcomeText {
-    border-right: 3px solid #ff4b00;
+#welcomeText::after {
+    content: "";
 
-    padding-right: 7px;
+    display: inline-block;
 
-    animation: cursorBlink 0.8s infinite;
+    width: 3px;
+    height: 0.95em;
+
+    margin-left: 6px;
+
+    vertical-align: -0.08em;
+
+    background: #ff4a12;
+
+    animation:
+        cursorBlink 0.8s infinite;
 }
 
 @keyframes cursorBlink {
 
     0%,
-    50% {
-        border-color: #ff4b00;
+    45% {
+        opacity: 1;
     }
 
-    51%,
+    46%,
     100% {
-        border-color: transparent;
-    }
-}
-
-
-/* =========================================
-   HOME DESCRIPTION
-   ========================================= */
-
-.home-description {
-    margin-top: 10px;
-
-    color: #bdbdbd;
-
-    font-size: 14px;
-    letter-spacing: 3px;
-}
-
-
-/* =========================================
-   BUTTONS
-   ========================================= */
-
-.discord-button {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 30px;
-
-    min-width: 220px;
-    padding: 15px 28px;
-
-    color: white;
-    text-decoration: none;
-
-    border: 1px solid #ff4b00;
-    border-radius: 8px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e63d00,
-            #a90000
-        );
-
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 0 20px rgba(255, 50, 0, 0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.discord-button:hover {
-    transform: translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 0 20px rgba(255, 70, 0, 0.55),
-        0 0 50px rgba(255, 30, 0, 0.2);
-}
-
-.discord-button.clicked {
-    transform: scale(0.96);
-}
-
-
-/* =========================================
-   RIPPLE
-   ========================================= */
-
-.button-ripple {
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    background: rgba(255, 255, 255, 0.4);
-
-    border-radius: 50%;
-
-    transform: translate(-50%, -50%);
-
-    animation: ripple 0.6s linear;
-
-    pointer-events: none;
-}
-
-@keyframes ripple {
-
-    from {
-        width: 10px;
-        height: 10px;
-        opacity: 0.8;
-    }
-
-    to {
-        width: 500px;
-        height: 500px;
         opacity: 0;
     }
 }
 
 
-/* =========================================
-   GENERAL PAGE CONTENT
-   ========================================= */
+/* =========================================================
+   HOME DESCRIPTION
+   ========================================================= */
+
+.home-description {
+    margin-top: 14px;
+
+    color: #bdbdbd;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.discord-button,
+.application-main-button,
+.private-chat-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 235px;
+
+    min-height: 52px;
+
+    margin-top: 30px;
+
+    padding: 0 28px;
+
+    border: 1px solid #ff4a0b;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f24708,
+            #c52200
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 7px 25px rgba(200, 35, 0, 0.2);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.discord-button:hover,
+.application-main-button:hover,
+.private-chat-button:hover {
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5a14,
+            #e62b00
+        );
+
+    box-shadow:
+        0 10px 35px rgba(255, 55, 0, 0.4);
+}
+
+.discord-button:active,
+.application-main-button:active,
+.private-chat-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   GENERAL PAGE STRUCTURE
+   ========================================================= */
 
 .about-page,
 .faq-page,
@@ -479,159 +603,221 @@ body::before {
     min-height: 100vh;
 
     padding:
-        150px
+        125px
         25px
         100px;
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 }
 
-.about-content,
-.faq-content,
-.socials-content,
-.applications-content {
-    width: min(950px, 100%);
+.about-page,
+.faq-page,
+.socials-page,
+.applications-page {
+    position: relative;
+}
+
+.about-page::before,
+.faq-page::before,
+.socials-page::before,
+.applications-page::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 66px 0 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255, 55, 0, 0.08),
+            transparent 48%
+        );
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-content {
+    width: min(850px, 100%);
+
+    margin: 0 auto;
+
     text-align: center;
+
+    padding: 50px 45px;
+
+    border:
+        1px solid rgba(255, 65, 0, 0.28);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 7, 4, 0.92),
+            rgba(9, 5, 4, 0.95)
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
+.page-logo {
+    width: 140px;
+    height: 140px;
 
-/* =========================================
-   PAGE TITLES
-   ========================================= */
+    object-fit: contain;
+
+    margin-bottom: 18px;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255, 60, 0, 0.65)
+        );
+}
 
 .about-content h1,
 .faq-content h1,
 .socials-content h1,
-.applications-content > h1 {
-    font-size: clamp(28px, 5vw, 48px);
+.applications-content h1 {
+    font-size:
+        clamp(
+            27px,
+            4vw,
+            44px
+        );
 
     font-weight: 950;
 
     letter-spacing: 2px;
 
+    text-transform: uppercase;
+
     text-shadow:
-        0 0 12px rgba(255, 60, 0, 0.5);
+        0 0 15px rgba(255, 55, 0, 0.4);
 }
 
 .about-line,
 .faq-line,
 .socials-line,
 .applications-line {
-    width: 90px;
+    width: 80px;
     height: 3px;
 
-    margin: 20px auto 35px;
+    margin: 18px auto 28px;
+
+    border-radius: 5px;
 
     background:
         linear-gradient(
             90deg,
-            #ff2800,
-            #ff7500
+            #ff5a13,
+            #c72000
         );
 
     box-shadow:
-        0 0 12px rgba(255, 70, 0, 0.7);
-}
-
-
-/* =========================================
-   ABOUT
-   ========================================= */
-
-.about-content {
-    padding: 55px 45px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 55, 0, 0.07),
-            rgba(0, 0, 0, 0.65)
-        );
-
-    border: 1px solid rgba(255, 70, 0, 0.3);
-    border-radius: 15px;
-
-    box-shadow:
-        0 0 35px rgba(255, 40, 0, 0.08);
+        0 0 12px rgba(255, 55, 0, 0.45);
 }
 
 .about-content p {
-    max-width: 780px;
+    margin: 18px auto;
 
-    margin: 0 auto 22px;
+    max-width: 700px;
 
-    color: #d0d0d0;
+    color: #d2d2d2;
 
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 17px;
+
+    line-height: 1.9;
 }
 
 
-/* =========================================
+/* =========================================================
    FAQ
-   ========================================= */
+   ========================================================= */
 
 .faq-content {
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+
     text-align: center;
+
+    padding: 45px 30px;
 }
 
 .faq-item {
+    width: 100%;
+
     margin-bottom: 13px;
-
-    text-align: left;
-
-    border: 1px solid rgba(255, 70, 0, 0.3);
-    border-radius: 10px;
 
     overflow: hidden;
 
-    background: rgba(10, 10, 10, 0.75);
+    border:
+        1px solid rgba(255, 65, 0, 0.25);
+
+    border-radius: 9px;
+
+    background:
+        rgba(14, 6, 5, 0.92);
+
+    text-align: left;
 
     transition:
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
-.faq-item:hover {
-    border-color: rgba(255, 80, 0, 0.7);
-}
-
+.faq-item:hover,
 .faq-item.open {
+    border-color:
+        rgba(255, 70, 0, 0.65);
+
     box-shadow:
-        0 0 20px rgba(255, 50, 0, 0.12);
+        0 0 20px rgba(255, 45, 0, 0.08);
 }
 
 .faq-question {
     width: 100%;
 
+    min-height: 62px;
+
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    padding: 20px;
+    padding: 0 22px;
 
     border: 0;
 
     background: transparent;
 
-    color: white;
+    color: #ffffff;
 
-    font-size: 16px;
+    font-size: 15px;
+
     font-weight: 800;
 
     text-align: left;
 
-    cursor: pointer;
+    letter-spacing: 0.4px;
 }
 
 .faq-question span {
-    color: #ff5a00;
+    color: #ff4a0b;
 
     font-size: 25px;
 
-    transition: transform 0.25s ease;
+    font-weight: 400;
+
+    transition:
+        transform 0.25s ease;
 }
 
 .faq-item.open .faq-question span {
@@ -648,22 +834,38 @@ body::before {
 }
 
 .faq-answer p {
-    padding: 0 20px 20px;
+    padding:
+        0 22px
+        22px;
 
     color: #bdbdbd;
+
+    font-size: 14px;
 
     line-height: 1.7;
 }
 
 
-/* =========================================
+/* =========================================================
    SOCIALS
-   ========================================= */
+   ========================================================= */
+
+.socials-content {
+    width: min(850px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    padding: 40px 25px;
+}
 
 .socials-description {
     max-width: 650px;
 
-    margin: 0 auto 35px;
+    margin:
+        0 auto
+        30px;
 
     color: #aaa;
 
@@ -671,316 +873,364 @@ body::before {
 }
 
 .social-card {
-    display: flex;
-    align-items: center;
+    width: 100%;
 
-    width: min(650px, 100%);
-
-    margin: 15px auto;
-
-    padding: 20px 25px;
-
-    color: white;
-    text-decoration: none;
-
-    border: 1px solid rgba(255, 70, 0, 0.3);
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            110deg,
-            rgba(255, 50, 0, 0.08),
-            rgba(0, 0, 0, 0.65)
-        );
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.social-card:hover {
-    transform: translateX(7px);
-
-    border-color: #ff5500;
-
-    box-shadow:
-        0 0 25px rgba(255, 50, 0, 0.2);
-}
-
-.social-icon {
-    width: 55px;
-    height: 55px;
+    min-height: 82px;
 
     display: flex;
+
     align-items: center;
-    justify-content: center;
 
-    margin-right: 18px;
+    margin: 14px 0;
 
-    border-radius: 12px;
+    padding: 15px 20px;
+
+    border:
+        1px solid rgba(255, 65, 0, 0.3);
+
+    border-radius: 10px;
 
     background:
         linear-gradient(
             135deg,
-            #ff4b00,
-            #b40000
+            rgba(28, 8, 5, 0.96),
+            rgba(9, 5, 4, 0.96)
+        );
+
+    text-align: left;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.social-card:hover {
+    transform: translateX(5px);
+
+    border-color:
+        rgba(255, 70, 0, 0.8);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(60, 15, 7, 0.96),
+            rgba(14, 5, 4, 0.96)
         );
 
     box-shadow:
-        0 0 18px rgba(255, 50, 0, 0.25);
+        0 8px 30px rgba(255, 50, 0, 0.12);
 }
 
-.social-icon svg {
-    width: 28px;
-    height: 28px;
+.social-icon {
+    width: 50px;
+    height: 50px;
 
-    fill: white;
-}
+    display: flex;
 
-.discord-symbol {
-    font-size: 25px;
-    font-weight: 950;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin-right: 16px;
+
+    border:
+        1px solid rgba(255, 70, 0, 0.4);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255, 55, 0, 0.08);
+
+    font-size: 23px;
 }
 
 .social-info {
     flex: 1;
-    text-align: left;
 }
 
 .social-info h2 {
-    font-size: 16px;
+    margin-bottom: 4px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
     letter-spacing: 1px;
 }
 
 .social-info p {
-    margin-top: 5px;
-
     color: #999;
 
     font-size: 13px;
 }
 
 .social-arrow {
-    color: #ff5a00;
+    color: #ff4a0b;
 
-    font-size: 25px;
+    font-size: 24px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.social-card:hover .social-arrow {
+    transform: translateX(5px);
 }
 
 
-/* =========================================
+/* =========================================================
    APPLICATIONS
-   ========================================= */
+   ========================================================= */
+
+.applications-content {
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    padding: 40px 25px;
+}
 
 .application-warning {
-    max-width: 850px;
+    width: 100%;
 
-    margin: 0 auto 25px;
+    margin: 25px auto;
 
-    padding: 25px;
+    padding: 24px;
 
-    text-align: left;
+    border:
+        1px solid rgba(255, 175, 0, 0.45);
 
-    border: 1px solid #ff4b00;
-    border-left: 5px solid #ff2600;
-    border-radius: 10px;
+    border-left:
+        4px solid #ff5a00;
+
+    border-radius: 9px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255, 50, 0, 0.13),
-            rgba(20, 5, 3, 0.9)
+            rgba(80, 32, 3, 0.38),
+            rgba(25, 8, 4, 0.92)
         );
 
+    text-align: left;
+
     box-shadow:
-        0 0 25px rgba(255, 50, 0, 0.1);
+        0 10px 35px rgba(0, 0, 0, 0.25);
 }
 
 .warning-title {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     margin-bottom: 15px;
 
-    color: #ff6500;
+    color: #ffb000;
 
-    font-size: 22px;
-    font-weight: 950;
+    font-size: 20px;
+
+    font-weight: 900;
 }
 
 .warning-icon {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .application-warning p {
-    margin-top: 10px;
+    margin-top: 9px;
 
-    color: #ddd;
+    color: #d7d7d7;
+
+    font-size: 14px;
 
     line-height: 1.7;
 }
 
 
-/* =========================================
-   APPLICATION BUTTON
-   ========================================= */
+/* =========================================================
+   APPLICATION MAIN BUTTON
+   ========================================================= */
 
-.application-main-button,
-.private-chat-button {
-    padding: 15px 30px;
+.application-main-button {
+    margin-top: 15px;
 
-    border: 1px solid #ff4b00;
-    border-radius: 8px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e83f00,
-            #a90000
-        );
-
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: 1px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 18px rgba(255, 50, 0, 0.2);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.application-main-button:hover,
-.private-chat-button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 0 25px rgba(255, 60, 0, 0.45);
+    min-width: 250px;
 }
 
 
-/* =========================================
+/* =========================================================
    ROLE SELECTION
-   ========================================= */
+   ========================================================= */
 
 .role-selection {
-    max-width: 850px;
+    width: 100%;
 
-    margin: 30px auto;
+    margin-top: 35px;
 
     padding: 30px;
 
-    border: 1px solid rgba(255, 70, 0, 0.35);
-    border-radius: 12px;
+    border:
+        1px solid rgba(255, 65, 0, 0.3);
 
-    background: rgba(8, 8, 8, 0.85);
+    border-radius: 10px;
+
+    background:
+        rgba(12, 5, 4, 0.94);
 }
 
-.role-selection h2 {
+.role-selection h2,
+.application-form h2,
+.private-chat h2 {
     margin-bottom: 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
 }
 
-.role-selection p {
-    color: #aaa;
+.role-selection > p {
+    color: #999;
+
+    font-size: 14px;
+
+    margin-bottom: 24px;
 }
 
 .role-buttons {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
 
-    gap: 15px;
-
-    margin-top: 25px;
+    gap: 12px;
 }
 
 .role-button {
-    padding: 17px;
+    min-height: 58px;
 
-    border: 1px solid rgba(255, 70, 0, 0.4);
-    border-radius: 8px;
+    padding: 0 15px;
 
-    color: white;
+    border:
+        1px solid rgba(255, 65, 0, 0.35);
 
-    background: #111;
+    border-radius: 7px;
 
-    font-weight: 900;
-
-    cursor: pointer;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.role-button:hover {
     background:
         linear-gradient(
             135deg,
-            #e53f00,
-            #a60000
+            #160806,
+            #0c0504
         );
 
-    border-color: #ff5a00;
+    color: #ffffff;
 
-    transform: translateY(-3px);
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.role-button:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        #ff4b0b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c210b,
+            #3b0e06
+        );
+
+    box-shadow:
+        0 8px 25px rgba(255, 50, 0, 0.16);
 }
 
 
-/* =========================================
+/* =========================================================
    APPLICATION FORM
-   ========================================= */
+   ========================================================= */
 
 .application-form {
-    max-width: 850px;
+    width: 100%;
 
-    margin: 30px auto;
+    margin-top: 30px;
 
-    padding: 35px;
+    padding: 30px;
+
+    border:
+        1px solid rgba(255, 65, 0, 0.32);
+
+    border-radius: 10px;
+
+    background:
+        rgba(10, 5, 4, 0.96);
 
     text-align: left;
-
-    border: 1px solid rgba(255, 70, 0, 0.35);
-    border-radius: 12px;
-
-    background: rgba(8, 8, 8, 0.9);
 }
 
 .application-form h2 {
-    margin-bottom: 20px;
-
     text-align: center;
 }
 
 .selected-role {
-    margin-bottom: 25px;
+    margin:
+        20px 0
+        25px;
 
-    padding: 13px;
+    padding: 14px 16px;
 
-    border-radius: 7px;
+    border-left:
+        3px solid #ff4a0b;
 
-    background: rgba(255, 60, 0, 0.08);
+    border-radius: 5px;
+
+    background:
+        rgba(255, 55, 0, 0.07);
 
     color: #aaa;
+
+    font-size: 14px;
 }
 
 .selected-role strong {
-    color: #ff6200;
+    color: #ff5a12;
 }
 
 .application-form label {
     display: block;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
-    font-weight: 800;
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    font-weight: 700;
 }
 
 .application-form textarea,
@@ -991,16 +1241,21 @@ body::before {
 
     padding: 15px;
 
-    border: 1px solid rgba(255, 70, 0, 0.3);
-    border-radius: 8px;
+    border:
+        1px solid rgba(255, 65, 0, 0.25);
+
+    border-radius: 7px;
 
     outline: none;
 
-    color: white;
+    background:
+        #080504;
 
-    background: #0d0d0d;
+    color: #ffffff;
 
-    font-family: inherit;
+    font-size: 14px;
+
+    line-height: 1.6;
 
     transition:
         border-color 0.25s ease,
@@ -1009,99 +1264,143 @@ body::before {
 
 .application-form textarea:focus,
 .chat-input-area textarea:focus {
-    border-color: #ff5500;
+    border-color:
+        #ff4a0b;
 
     box-shadow:
-        0 0 15px rgba(255, 60, 0, 0.15);
+        0 0 15px rgba(255, 55, 0, 0.1);
 }
 
+.application-form textarea::placeholder,
+.chat-input-area textarea::placeholder {
+    color: #666;
+}
+
+
+/* =========================================================
+   PRIVATE CHAT INFO
+   ========================================================= */
+
 .private-chat-info {
-    margin: 25px 0;
+    margin-top: 25px;
 
-    padding: 20px;
+    padding: 18px;
 
-    border-left: 3px solid #ff4b00;
+    border:
+        1px solid rgba(255, 65, 0, 0.2);
 
-    background: rgba(255, 50, 0, 0.05);
+    border-radius: 7px;
+
+    background:
+        rgba(255, 55, 0, 0.035);
 }
 
 .private-chat-info h3 {
-    color: #ff5c00;
-
     margin-bottom: 8px;
+
+    color: #ff4a0b;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
 }
 
 .private-chat-info p {
-    margin-top: 7px;
+    margin-top: 5px;
 
-    color: #aaa;
+    color: #999;
+
+    font-size: 13px;
 
     line-height: 1.6;
 }
 
+.private-chat-button {
+    margin-top: 22px;
+}
 
-/* =========================================
+
+/* =========================================================
    PRIVATE CHAT
-   ========================================= */
+   ========================================================= */
 
 .private-chat {
-    max-width: 850px;
+    width: 100%;
 
-    margin: 30px auto;
+    margin-top: 30px;
 
     overflow: hidden;
 
-    text-align: left;
+    border:
+        1px solid rgba(255, 65, 0, 0.38);
 
-    border: 1px solid #ff4b00;
-    border-radius: 12px;
+    border-radius: 10px;
 
-    background: #080808;
+    background:
+        #080504;
 
     box-shadow:
-        0 0 35px rgba(255, 50, 0, 0.15);
+        0 20px 60px rgba(0, 0, 0, 0.4);
+
+    text-align: left;
 }
 
 .private-chat-header {
+    min-height: 65px;
+
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    padding: 18px 20px;
+    padding: 0 20px;
 
-    border-bottom: 1px solid rgba(255, 70, 0, 0.3);
+    border-bottom:
+        1px solid rgba(255, 65, 0, 0.2);
 
     background:
         linear-gradient(
-            90deg,
-            rgba(255, 50, 0, 0.12),
-            transparent
+            135deg,
+            #1e0805,
+            #0e0504
         );
 }
 
 .private-chat-header h2 {
-    font-size: 16px;
+    margin: 0;
 }
 
 .close-chat {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
 
-    border: 1px solid rgba(255, 70, 0, 0.4);
+    border: 1px solid rgba(255, 65, 0, 0.3);
+
     border-radius: 6px;
 
-    color: white;
+    background: transparent;
 
-    background: #111;
+    color: #ffffff;
 
     font-size: 25px;
 
-    cursor: pointer;
+    line-height: 1;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .close-chat:hover {
-    background: #b90000;
+    background: #d52b00;
+
+    color: #ffffff;
 }
+
+
+/* =========================================================
+   CHAT MESSAGES
+   ========================================================= */
 
 .chat-messages {
     min-height: 300px;
@@ -1110,55 +1409,102 @@ body::before {
     overflow-y: auto;
 
     padding: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 50, 0, 0.045),
+            transparent 50%
+        );
 }
 
 .chat-message {
+    width: fit-content;
+
     max-width: 80%;
 
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 
     padding: 12px 15px;
 
-    border-radius: 10px;
+    border-radius: 8px;
 
-    background: #151515;
+    font-size: 13px;
+
+    line-height: 1.55;
 }
 
 .chat-message strong {
-    color: #ff6200;
+    display: block;
 
-    font-size: 13px;
+    margin-bottom: 4px;
+
+    color: #ff5a12;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
 }
 
 .chat-message p {
-    margin-top: 6px;
+    color: #d3d3d3;
+}
 
-    color: #ddd;
+.staff-message {
+    border:
+        1px solid rgba(255, 65, 0, 0.18);
 
-    line-height: 1.5;
+    background:
+        rgba(255, 55, 0, 0.055);
 }
 
 .user-message {
     margin-left: auto;
 
-    border-right: 3px solid #ff4b00;
+    border:
+        1px solid rgba(255, 65, 0, 0.25);
+
+    background:
+        rgba(55, 18, 10, 0.8);
 }
 
-.staff-message {
-    border-left: 3px solid #ff4b00;
+.chat-photo {
+    display: block;
+
+    max-width: 300px;
+    max-height: 300px;
+
+    margin-top: 8px;
+
+    border:
+        1px solid rgba(255, 65, 0, 0.45);
+
+    border-radius: 7px;
+
+    object-fit: contain;
 }
+
+
+/* =========================================================
+   CHAT INPUT
+   ========================================================= */
 
 .chat-input-area {
     padding: 15px;
 
-    border-top: 1px solid rgba(255, 70, 0, 0.25);
+    border-top:
+        1px solid rgba(255, 65, 0, 0.2);
+
+    background:
+        #0b0504;
 }
 
 .chat-controls {
     display: flex;
 
     align-items: center;
-    justify-content: flex-end;
+
+    justify-content: space-between;
 
     gap: 10px;
 
@@ -1167,75 +1513,132 @@ body::before {
 
 .photo-button,
 .send-button {
-    padding: 10px 16px;
+    min-height: 42px;
 
-    border: 1px solid rgba(255, 70, 0, 0.5);
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
     border-radius: 6px;
 
-    color: white;
-
-    background: #111;
-
     font-size: 12px;
-    font-weight: 800;
+
+    font-weight: 900;
+
+    letter-spacing: 0.6px;
 
     cursor: pointer;
-
-    transition: 0.25s ease;
 }
 
-.photo-button:hover,
+.photo-button {
+    border:
+        1px solid rgba(255, 65, 0, 0.3);
+
+    background:
+        rgba(255, 55, 0, 0.06);
+
+    color: #ff5a12;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.photo-button:hover {
+    background:
+        rgba(255, 55, 0, 0.14);
+
+    border-color:
+        #ff4a0b;
+}
+
+.send-button {
+    min-width: 100px;
+
+    border:
+        1px solid #ff4a0b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ed4105,
+            #bd2100
+        );
+
+    color: #ffffff;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
 .send-button:hover {
-    background: #d83c00;
+    transform: translateY(-2px);
 
-    border-color: #ff5a00;
+    box-shadow:
+        0 6px 20px rgba(255, 55, 0, 0.25);
 }
 
 
-/* =========================================
+/* =========================================================
    LOADING SCREEN
-   ========================================= */
+   ========================================================= */
 
 #loading-screen {
     position: fixed;
 
     inset: 0;
 
-    z-index: 9999;
+    z-index: 5000;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 
-    gap: 20px;
+    flex-direction: column;
 
     background:
         radial-gradient(
-            circle,
-            rgba(255, 60, 0, 0.14),
-            #030303 65%
+            circle at center,
+            #210905 0%,
+            #0b0302 48%,
+            #030303 100%
         );
 
+    opacity: 1;
+
+    visibility: visible;
+
     transition:
-        opacity 0.7s ease,
-        visibility 0.7s ease;
+        opacity 0.6s ease,
+        visibility 0.6s ease;
 }
 
 #loading-screen.loaded {
     opacity: 0;
+
     visibility: hidden;
+
+    pointer-events: none;
 }
 
 .loading-logo {
-    width: 170px;
+    width: 150px;
+    height: 150px;
 
     object-fit: contain;
 
-    animation: loadingSpin 2s linear infinite;
+    animation:
+        loadingSpin 2s linear infinite;
 
     filter:
-        drop-shadow(0 0 15px rgba(255, 60, 0, 0.7));
+        drop-shadow(
+            0 0 20px rgba(255, 55, 0, 0.8)
+        );
 }
 
 @keyframes loadingSpin {
@@ -1250,16 +1653,22 @@ body::before {
 }
 
 .loading-text {
-    color: #ff5a00;
+    margin-top: 25px;
+
+    color: #ffffff;
 
     font-size: 14px;
+
     font-weight: 900;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 }
 
 .loading-text span {
-    animation: loadingDots 1.2s infinite;
+    color: #ff4a0b;
+
+    animation:
+        loadingDots 1.4s infinite;
 }
 
 .loading-text span:nth-child(2) {
@@ -1284,29 +1693,31 @@ body::before {
 }
 
 
-/* =========================================
+/* =========================================================
    HIDDEN
-   ========================================= */
+   ========================================================= */
 
 .hidden {
     display: none !important;
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-   ========================================= */
+   ========================================================= */
 
 .footer {
     width: 100%;
 
     padding: 25px 20px;
 
+    border-top:
+        1px solid rgba(255, 55, 0, 0.18);
+
+    background:
+        rgba(3, 3, 3, 0.88);
+
     text-align: center;
-
-    border-top: 1px solid rgba(255, 70, 0, 0.2);
-
-    background: rgba(3, 3, 3, 0.8);
 }
 
 .footer p {
@@ -1314,74 +1725,91 @@ body::before {
 
     color: #777;
 
-    font-size: 12px;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+
+    letter-spacing: 0.6px;
 }
 
 .footer p:last-child {
-    color: #ff5a00;
+    color: #ff4a0b;
+
+    font-weight: 700;
 }
 
 
-/* =========================================
-   MOBILE MENU
-   ========================================= */
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
-.mobile-menu-button {
-    display: none;
+::-webkit-scrollbar {
+    width: 8px;
+}
 
-    width: 42px;
-    height: 42px;
+::-webkit-scrollbar-track {
+    background: #050505;
+}
 
-    border: 1px solid rgba(255, 70, 0, 0.5);
-    border-radius: 7px;
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            #ff4a0b,
+            #a91d00
+        );
 
-    color: white;
+    border-radius: 10px;
+}
 
-    background: #111;
-
-    font-size: 22px;
-
-    cursor: pointer;
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            #ff6524,
+            #d72c00
+        );
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONSIVE
-   ========================================= */
+   ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
 
     .navbar {
-        padding: 10px 20px;
+        padding-left: 18px;
+        padding-right: 18px;
     }
 
     .brand span {
-        display: none;
+        font-size: 14px;
     }
 
     .nav-links {
         gap: 2px;
     }
 
-    .nav-links a {
-        padding: 10px 8px;
+    .nav-links > a {
+        padding-left: 10px;
+        padding-right: 10px;
 
         font-size: 11px;
     }
 
+    .nav-links > a::after {
+        left: 10px;
+        right: 10px;
+    }
+
+    .discord-nav {
+        padding-left: 11px !important;
+        padding-right: 11px !important;
+    }
 }
 
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 
     .navbar {
-        min-height: 68px;
-    }
-
-    .brand img {
-        width: 46px;
-        height: 46px;
+        height: 64px;
     }
 
     .mobile-menu-button {
@@ -1391,54 +1819,115 @@ body::before {
     .nav-links {
         position: absolute;
 
-        top: 68px;
+        top: 64px;
         left: 0;
 
         width: 100%;
 
+        height: auto;
+
         display: none;
+
         flex-direction: column;
+
         align-items: stretch;
 
-        padding: 12px;
+        gap: 0;
 
-        background: rgba(5, 5, 5, 0.98);
+        padding: 8px;
 
-        border-bottom: 1px solid rgba(255, 70, 0, 0.3);
+        border-bottom:
+            1px solid rgba(255, 65, 0, 0.3);
+
+        background:
+            rgba(5, 5, 5, 0.98);
+
+        backdrop-filter: blur(15px);
     }
 
     .nav-links.mobile-open {
         display: flex;
     }
 
-    .nav-links a {
+    .nav-links > a {
+        height: 48px;
+
         width: 100%;
 
-        padding: 14px;
+        padding: 0 15px;
 
-        text-align: center;
+        justify-content: flex-start;
+
+        border-radius: 5px;
+    }
+
+    .nav-links > a::after {
+        display: none;
+    }
+
+    .nav-links > a:hover,
+    .nav-links > a.active {
+        background:
+            rgba(255, 55, 0, 0.08);
     }
 
     .discord-nav {
-        margin-left: 0;
+        margin: 5px 0 0;
+
+        justify-content: center !important;
     }
 
     .home {
-        padding-top: 110px;
-    }
-
-    .home-logo {
-        width: min(300px, 80vw);
+        padding-top: 105px;
     }
 
     .welcome-text {
-        font-size: clamp(23px, 7vw, 40px);
-        letter-spacing: 1px;
+        font-size:
+            clamp(
+                28px,
+                7vw,
+                48px
+            );
     }
 
     .home-description {
         font-size: 11px;
-        letter-spacing: 1.5px;
+
+        letter-spacing: 2px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .brand img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand span {
+        font-size: 12px;
+
+        letter-spacing: 1px;
+    }
+
+    .home-logo {
+        width: 135px;
+        height: 135px;
+    }
+
+    .welcome-text {
+        min-height: 105px;
+
+        font-size: 28px;
+
+        letter-spacing: 1px;
+    }
+
+    .home-description {
+        max-width: 330px;
+
+        line-height: 1.7;
     }
 
     .about-page,
@@ -1446,65 +1935,114 @@ body::before {
     .socials-page,
     .applications-page {
         padding:
-            110px
+            100px
             15px
-            70px;
+            60px;
     }
 
     .about-content {
-        padding: 35px 20px;
+        padding:
+            30px 20px;
+    }
+
+    .faq-content,
+    .socials-content,
+    .applications-content {
+        padding:
+            30px 0;
+    }
+
+    .page-logo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .about-content h1,
+    .faq-content h1,
+    .socials-content h1,
+    .applications-content h1 {
+        font-size: 25px;
     }
 
     .about-content p {
-        font-size: 16px;
+        font-size: 15px;
+
+        line-height: 1.75;
+    }
+
+    .faq-question {
+        min-height: 58px;
+
+        padding:
+            0 15px;
+
+        font-size: 13px;
+    }
+
+    .faq-answer p {
+        padding:
+            0 15px
+            18px;
     }
 
     .role-buttons {
         grid-template-columns: 1fr;
     }
 
+    .role-selection,
     .application-form {
-        padding: 25px 18px;
+        padding: 20px 15px;
+    }
+
+    .application-warning {
+        padding: 18px;
+    }
+
+    .chat-controls {
+        flex-wrap: wrap;
+    }
+
+    .photo-button,
+    .send-button {
+        flex: 1;
     }
 
     .chat-message {
-        max-width: 92%;
+        max-width: 90%;
     }
 
+    .chat-photo {
+        max-width: 230px;
+        max-height: 230px;
+    }
 }
 
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
+
+    .brand span {
+        font-size: 10px;
+    }
+
+    .brand img {
+        width: 36px;
+        height: 36px;
+    }
 
     .home-logo {
-        width: 240px;
+        width: 115px;
+        height: 115px;
     }
 
     .welcome-text {
-        font-size: 24px;
+        font-size: 25px;
     }
 
-    .discord-button {
-        min-width: 190px;
-        padding: 13px 20px;
-    }
+    .discord-button,
+    .application-main-button,
+    .private-chat-button {
+        width: 100%;
 
-    .social-card {
-        padding: 15px;
+        min-width: 0;
     }
-
-    .social-icon {
-        width: 45px;
-        height: 45px;
-        margin-right: 12px;
-    }
-
-    .social-info h2 {
-        font-size: 14px;
-    }
-
-    .social-info p {
-        font-size: 11px;
-    }
-
 }
