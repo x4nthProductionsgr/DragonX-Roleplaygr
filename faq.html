@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ | DragonX Roleplay</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+
+        <div class="nav-left">
+            <a href="index.html" class="brand">
+                <img src="DragonX_main_logo(1).png" alt="DragonX Roleplay Logo">
+                <span>DRAGONX ROLEPLAY</span>
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a href="socials.html">SOCIALS</a>
+            <a href="applications.html">APPLICATIONS</a>
+
+            <a
+                href="https://discord.gg/KAFXZauzkg"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord-nav"
+            >
+                JOIN OUR DISCORD
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= FAQ PAGE ================= -->
+    <main class="faq-page">
+
+        <section class="faq-content">
+
+            <h1>FREQUENTLY ASKED QUESTIONS</h1>
+
+            <div class="faq-line"></div>
+
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is DragonX Roleplay?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        DragonX Roleplay is an upcoming FiveM RolePlay server
+                        focused on serious roleplay, custom scripts, PvP and
+                        creating a fun experience for the community.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    When will DragonX Roleplay launch?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        The official launch date will be announced on our
+                        Discord server.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I join the server?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Join our Discord server to receive the latest
+                        information about DragonX Roleplay and the server
+                        launch.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I apply for Staff?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes. You can visit the Applications page and choose
+                        the role you would like to apply for.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Where can I contact the DragonX team?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        You can contact the team through our Discord server.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Discord -->
+            <a
+                href="https://discord.gg/KAFXZauzkg"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord-button"
+            >
+                JOIN OUR DISCORD
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <p>© 2026 DragonX Roleplay. All Rights Reserved.</p>
+        <p>Site Created by x4nth</p>
+    </footer>
+
+
+    <!-- ================= FAQ SCRIPT ================= -->
+    <script>
+        const faqQuestions = document.querySelectorAll(".faq-question");
+
+        faqQuestions.forEach(question => {
+
+            question.addEventListener("click", () => {
+
+                const currentItem = question.parentElement;
+                const currentAnswer = currentItem.querySelector(".faq-answer");
+                const currentIcon = question.querySelector("span");
+
+                document.querySelectorAll(".faq-item").forEach(item => {
+
+                    if (item !== currentItem) {
+                        item.classList.remove("open");
+
+                        const answer = item.querySelector(".faq-answer");
+                        const icon = item.querySelector(".faq-question span");
+
+                        answer.style.maxHeight = null;
+                        icon.textContent = "+";
+                    }
+
+                });
+
+                currentItem.classList.toggle("open");
+
+                if (currentItem.classList.contains("open")) {
+                    currentAnswer.style.maxHeight =
+                        currentAnswer.scrollHeight + "px";
+
+                    currentIcon.textContent = "−";
+                } else {
+                    currentAnswer.style.maxHeight = null;
+                    currentIcon.textContent = "+";
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
