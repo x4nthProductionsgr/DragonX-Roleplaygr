@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Applications | DragonX Roleplay</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= LOADING SCREEN ================= -->
+    <div id="loading-screen">
+
+        <img
+            src="DragonX_main_logo(1).png"
+            alt="DragonX Roleplay"
+            class="loading-logo"
+        >
+
+        <div class="loading-text">
+            LOADING<span>.</span><span>.</span><span>.</span>
+        </div>
+
+    </div>
+
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+
+        <div class="nav-left">
+            <a href="index.html" class="brand">
+
+                <img
+                    src="DragonX_main_logo(1).png"
+                    alt="DragonX Roleplay Logo"
+                >
+
+                <span>DRAGONX ROLEPLAY</span>
+
+            </a>
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="about.html">
+                ABOUT
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+            <a href="socials.html">
+                SOCIALS
+            </a>
+
+            <a href="applications.html" class="active">
+                APPLICATIONS
+            </a>
+
+            <a
+                href="https://discord.gg/KAFXZauzkg"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord-nav"
+            >
+                JOIN OUR DISCORD
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= APPLICATIONS ================= -->
+    <main class="applications-page">
+
+        <section class="applications-content">
+
+            <h1>DRAGONX APPLICATIONS</h1>
+
+            <div class="applications-line"></div>
+
+
+            <!-- ================= WARNING ================= -->
+            <div class="application-warning">
+
+                <div class="warning-title">
+                    <span class="warning-icon">⚠️</span>
+                    <span>Προσοχή!</span>
+                </div>
+
+                <p>
+                    Μην κλείσεις το ticket μέχρι να λάβεις την τελική
+                    απάντηση από το staff. Αν το κλείσεις νωρίτερα,
+                    η αίτησή σου μπορεί να μην εξεταστεί ή να χρειαστεί
+                    να την υποβάλεις ξανά.
+                </p>
+
+                <p>
+                    Ευχαριστούμε και καλή επιτυχία! 🍀
+                </p>
+
+            </div>
+
+
+            <!-- ================= OPEN TICKET ================= -->
+            <button
+                id="openTicketButton"
+                class="application-main-button"
+            >
+                OPEN TICKET
+            </button>
+
+
+            <!-- ================= ROLE SELECTION ================= -->
+            <div
+                id="roleSelection"
+                class="role-selection hidden"
+            >
+
+                <h2>CHOOSE YOUR APPLICATION</h2>
+
+                <p>
+                    Select the role you want to apply for.
+                </p>
+
+
+                <div class="role-buttons">
+
+                    <button
+                        class="role-button"
+                        data-role="Discord Staff"
+                    >
+                        DISCORD STAFF
+                    </button>
+
+                    <button
+                        class="role-button"
+                        data-role="OwnerShip"
+                    >
+                        OWNERSHIP
+                    </button>
+
+                    <button
+                        class="role-button"
+                        data-role="Helper"
+                    >
+                        HELPER
+                    </button>
+
+                    <button
+                        class="role-button"
+                        data-role="Development"
+                    >
+                        DEVELOPMENT
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= APPLICATION FORM ================= -->
+            <div
+                id="applicationForm"
+                class="application-form hidden"
+            >
+
+                <h2>DRAGONX APPLICATIONS</h2>
+
+                <div class="selected-role">
+                    Applying for:
+                    <strong id="selectedRole"></strong>
+                </div>
+
+
+                <label for="reason">
+                    Γιατί θες να είσαι ο συγκεκριμένος ρόλος;
+                </label>
+
+                <textarea
+                    id="reason"
+                    placeholder="Γράψε εδώ γιατί θέλεις να γίνεις ο συγκεκριμένος ρόλος..."
+                    rows="7"
+                ></textarea>
+
+
+                <div class="private-chat-info">
+
+                    <h3>PRIVATE CHAT</h3>
+
+                    <p>
+                        Μετά την υποβολή της αίτησης μπορείς να
+                        επικοινωνήσεις με το staff μέσω private chat.
+                    </p>
+
+                    <p>
+                        Επιτρέπονται μόνο αρχεία εικόνας / photos.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="openPrivateChat"
+                    class="private-chat-button"
+                >
+                    OPEN PRIVATE CHAT
+                </button>
+
+            </div>
+
+
+            <!-- ================= PRIVATE CHAT ================= -->
+            <div
+                id="privateChat"
+                class="private-chat hidden"
+            >
+
+                <div class="private-chat-header">
+
+                    <h2>DRAGONX PRIVATE CHAT</h2>
+
+                    <button
+                        id="closeChat"
+                        class="close-chat"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages"
+                >
+
+                    <div class="chat-message staff-message">
+                        <strong>DragonX Staff</strong>
+                        <p>
+                            Welcome to your private application chat.
+                            Please wait for a member of staff to respond.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <textarea
+                        id="chatInput"
+                        placeholder="Write a message..."
+                        rows="2"
+                    ></textarea>
+
+
+                    <div class="chat-controls">
+
+                        <label
+                            for="photoUpload"
+                            class="photo-button"
+                        >
+                            📷 PHOTO
+                        </label>
+
+                        <input
+                            type="file"
+                            id="photoUpload"
+                            accept="image/*"
+                            hidden
+                        >
+
+                        <button
+                            id="sendMessage"
+                            class="send-button"
+                        >
+                            SEND
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <p>
+            © 2026 DragonX Roleplay. All Rights Reserved.
+        </p>
+
+        <p>
+            Site Created by x4nth
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+
+        /* ================= LOADING SCREEN ================= */
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+
+                const loadingScreen =
+                    document.getElementById("loading-screen");
+
+                loadingScreen.classList.add("loaded");
+
+            }, 1200);
+
+        });
+
+
+        /* ================= ELEMENTS ================= */
+
+        const openTicketButton =
+            document.getElementById("openTicketButton");
+
+        const roleSelection =
+            document.getElementById("roleSelection");
+
+        const applicationForm =
+            document.getElementById("applicationForm");
+
+        const selectedRole =
+            document.getElementById("selectedRole");
+
+        const roleButtons =
+            document.querySelectorAll(".role-button");
+
+        const openPrivateChat =
+            document.getElementById("openPrivateChat");
+
+        const privateChat =
+            document.getElementById("privateChat");
+
+        const closeChat =
+            document.getElementById("closeChat");
+
+        const sendMessage =
+            document.getElementById("sendMessage");
+
+        const chatInput =
+            document.getElementById("chatInput");
+
+        const chatMessages =
+            document.getElementById("chatMessages");
+
+        const photoUpload =
+            document.getElementById("photoUpload");
+
+
+        /* ================= OPEN TICKET ================= */
+
+        openTicketButton.addEventListener("click", () => {
+
+            roleSelection.classList.remove("hidden");
+
+            openTicketButton.style.display = "none";
+
+            roleSelection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+
+
+        /* ================= ROLE SELECTION ================= */
+
+        roleButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const role =
+                    button.getAttribute("data-role");
+
+                selectedRole.textContent = role;
+
+                roleSelection.classList.add("hidden");
+
+                applicationForm.classList.remove("hidden");
+
+                applicationForm.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            });
+
+        });
+
+
+        /* ================= OPEN PRIVATE CHAT ================= */
+
+        openPrivateChat.addEventListener("click", () => {
+
+            const reason =
+                document.getElementById("reason").value.trim();
+
+            if (reason === "") {
+
+                alert(
+                    "Please write why you want this role before opening the private chat."
+                );
+
+                return;
+
+            }
+
+            privateChat.classList.remove("hidden");
+
+            privateChat.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+
+
+        /* ================= CLOSE CHAT ================= */
+
+        closeChat.addEventListener("click", () => {
+
+            privateChat.classList.add("hidden");
+
+        });
+
+
+        /* ================= SEND MESSAGE ================= */
+
+        sendMessage.addEventListener("click", () => {
+
+            const message =
+                chatInput.value.trim();
+
+            if (message === "") {
+                return;
+            }
+
+
+            const messageElement =
+                document.createElement("div");
+
+            messageElement.className =
+                "chat-message user-message";
+
+            messageElement.innerHTML = `
+                <strong>You</strong>
+                <p>${message}</p>
+            `;
+
+
+            chatMessages.appendChild(messageElement);
+
+            chatInput.value = "";
+
+            chatMessages.scrollTop =
+                chatMessages.scrollHeight;
+
+        });
+
+
+        /* ================= PHOTO UPLOAD ================= */
+
+        photoUpload.addEventListener("change", () => {
+
+            const file =
+                photoUpload.files[0];
+
+            if (!file) {
+                return;
+            }
+
+
+            if (!file.type.startsWith("image/")) {
+
+                alert(
+                    "Only image files are allowed."
+                );
+
+                photoUpload.value = "";
+
+                return;
+
+            }
+
+
+            const messageElement =
+                document.createElement("div");
+
+            messageElement.className =
+                "chat-message user-message";
+
+
+            const imageURL =
+                URL.createObjectURL(file);
+
+
+            messageElement.innerHTML = `
+                <strong>You</strong>
+                <p>📷 Photo sent</p>
+                <img
+                    src="${imageURL}"
+                    alt="Uploaded photo"
+                    style="max-width: 220px; border-radius: 10px; margin-top: 8px;"
+                >
+            `;
+
+
+            chatMessages.appendChild(messageElement);
+
+            chatMessages.scrollTop =
+                chatMessages.scrollHeight;
+
+        });
+
+    </script>
+
+</body>
+</html>
