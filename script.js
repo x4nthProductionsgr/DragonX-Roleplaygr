@@ -1,26 +1,32 @@
 /* =========================================
-   DRAGONX ROLEPLAY - MAIN SCRIPT
+   DRAGONX ROLEPLAY
+   MAIN JAVASCRIPT
    ========================================= */
 
 
 /* =========================================
-   WELCOME TEXT ANIMATION
+   HOME WELCOME ANIMATION
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const welcomeText = document.getElementById("welcomeText");
+    const welcomeText =
+        document.getElementById("welcomeText");
 
     if (welcomeText) {
 
-        const text = "WELCOME TO DRAGONX ROLEPLAY";
+        const text =
+            "WELCOME TO DRAGONX ROLEPLAY";
+
         let index = 0;
 
         function typeText() {
 
             if (index < text.length) {
 
-                welcomeText.textContent += text.charAt(index);
+                welcomeText.textContent +=
+                    text.charAt(index);
+
                 index++;
 
                 setTimeout(typeText, 80);
@@ -37,159 +43,421 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================
-   NAVBAR SCROLL EFFECT
+   NAVBAR SCROLL
    ========================================= */
 
 window.addEventListener("scroll", () => {
 
-    const navbar = document.querySelector(".navbar");
+    const navbar =
+        document.querySelector(".navbar");
 
     if (!navbar) return;
 
     if (window.scrollY > 30) {
+
         navbar.classList.add("scrolled");
+
     } else {
+
         navbar.classList.remove("scrolled");
+
     }
 
 });
 
 
 /* =========================================
-   PAGE FADE-IN
+   FAQ
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.body.classList.add("page-loaded");
+    const questions =
+        document.querySelectorAll(".faq-question");
+
+    questions.forEach(question => {
+
+        question.addEventListener("click", () => {
+
+            const item =
+                question.closest(".faq-item");
+
+            const answer =
+                item.querySelector(".faq-answer");
+
+            const icon =
+                question.querySelector("span");
+
+
+            document
+                .querySelectorAll(".faq-item")
+                .forEach(otherItem => {
+
+                    if (otherItem !== item) {
+
+                        otherItem.classList.remove("open");
+
+                        const otherAnswer =
+                            otherItem.querySelector(".faq-answer");
+
+                        otherAnswer.style.maxHeight = null;
+
+                        const otherIcon =
+                            otherItem.querySelector(".faq-question span");
+
+                        if (otherIcon) {
+                            otherIcon.textContent = "+";
+                        }
+
+                    }
+
+                });
+
+
+            item.classList.toggle("open");
+
+
+            if (item.classList.contains("open")) {
+
+                answer.style.maxHeight =
+                    answer.scrollHeight + "px";
+
+                icon.textContent = "−";
+
+            } else {
+
+                answer.style.maxHeight = null;
+
+                icon.textContent = "+";
+
+            }
+
+        });
+
+    });
 
 });
 
 
 /* =========================================
-   DISCORD BUTTON CLICK EFFECT
+   APPLICATIONS
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const discordButtons =
-        document.querySelectorAll(
-            ".discord-button, .discord-nav"
+    const openTicketButton =
+        document.getElementById("openTicketButton");
+
+    const roleSelection =
+        document.getElementById("roleSelection");
+
+    const applicationForm =
+        document.getElementById("applicationForm");
+
+    const selectedRole =
+        document.getElementById("selectedRole");
+
+    const openPrivateChat =
+        document.getElementById("openPrivateChat");
+
+    const privateChat =
+        document.getElementById("privateChat");
+
+    const closeChat =
+        document.getElementById("closeChat");
+
+    const chatInput =
+        document.getElementById("chatInput");
+
+    const sendMessage =
+        document.getElementById("sendMessage");
+
+    const chatMessages =
+        document.getElementById("chatMessages");
+
+    const photoUpload =
+        document.getElementById("photoUpload");
+
+
+    /* OPEN TICKET */
+
+    if (openTicketButton) {
+
+        openTicketButton.addEventListener(
+            "click",
+            () => {
+
+                roleSelection.classList.remove("hidden");
+
+                openTicketButton.style.display =
+                    "none";
+
+            }
         );
 
-    discordButtons.forEach(button => {
+    }
+
+
+    /* SELECT ROLE */
+
+    const roleButtons =
+        document.querySelectorAll(".role-button");
+
+    roleButtons.forEach(button => {
 
         button.addEventListener("click", () => {
 
-            button.classList.add("clicked");
+            const role =
+                button.dataset.role;
 
-            setTimeout(() => {
-                button.classList.remove("clicked");
-            }, 300);
+            selectedRole.textContent =
+                role;
+
+            roleSelection.classList.add("hidden");
+
+            applicationForm.classList.remove(
+                "hidden"
+            );
 
         });
 
     });
 
-});
+
+    /* OPEN PRIVATE CHAT */
+
+    if (openPrivateChat) {
+
+        openPrivateChat.addEventListener(
+            "click",
+            () => {
+
+                const reason =
+                    document
+                        .getElementById("applicationReason")
+                        .value
+                        .trim();
 
 
-/* =========================================
-   SMOOTH PAGE LINKS
-   ========================================= */
+                if (!reason) {
 
-document.addEventListener("DOMContentLoaded", () => {
+                    alert(
+                        "Please explain why you want this role before opening the private chat."
+                    );
 
-    const links =
-        document.querySelectorAll(
-            'a[href$=".html"]'
-        );
+                    return;
 
-    links.forEach(link => {
+                }
 
-        link.addEventListener("click", event => {
 
-            const destination =
-                link.getAttribute("href");
+                applicationForm.classList.add(
+                    "hidden"
+                );
 
-            if (
-                !destination ||
-                destination.startsWith("#") ||
-                link.target === "_blank"
-            ) {
-                return;
+                privateChat.classList.remove(
+                    "hidden"
+                );
+
             }
-
-            event.preventDefault();
-
-            document.body.classList.add("page-exit");
-
-            setTimeout(() => {
-                window.location.href = destination;
-            }, 180);
-
-        });
-
-    });
-
-});
-
-
-/* =========================================
-   BUTTON RIPPLE EFFECT
-   ========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const buttons =
-        document.querySelectorAll(
-            ".discord-button, .application-main-button, .private-chat-button, .role-button"
         );
 
-    buttons.forEach(button => {
+    }
 
-        button.addEventListener("click", function(event) {
 
-            const ripple =
-                document.createElement("span");
+    /* CLOSE CHAT */
 
-            ripple.classList.add("button-ripple");
+    if (closeChat) {
 
-            const rect =
-                this.getBoundingClientRect();
+        closeChat.addEventListener(
+            "click",
+            () => {
 
-            ripple.style.left =
-                `${event.clientX - rect.left}px`;
+                privateChat.classList.add(
+                    "hidden"
+                );
 
-            ripple.style.top =
-                `${event.clientY - rect.top}px`;
+                applicationForm.classList.remove(
+                    "hidden"
+                );
 
-            this.appendChild(ripple);
+            }
+        );
 
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
+    }
 
-        });
 
-    });
+    /* SEND MESSAGE */
+
+    if (sendMessage) {
+
+        sendMessage.addEventListener(
+            "click",
+            () => {
+
+                const message =
+                    chatInput.value.trim();
+
+                if (!message) return;
+
+
+                const messageElement =
+                    document.createElement("div");
+
+                messageElement.className =
+                    "chat-message user-message";
+
+
+                messageElement.innerHTML = `
+                    <strong>YOU</strong>
+                    <p>${escapeHTML(message)}</p>
+                `;
+
+
+                chatMessages.appendChild(
+                    messageElement
+                );
+
+
+                chatInput.value = "";
+
+
+                chatMessages.scrollTop =
+                    chatMessages.scrollHeight;
+
+            }
+        );
+
+    }
+
+
+    /* PHOTO UPLOAD */
+
+    if (photoUpload) {
+
+        photoUpload.addEventListener(
+            "change",
+            () => {
+
+                const file =
+                    photoUpload.files[0];
+
+                if (!file) return;
+
+
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
+
+                    alert(
+                        "Only photos are allowed."
+                    );
+
+                    photoUpload.value = "";
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload = () => {
+
+                    const messageElement =
+                        document.createElement("div");
+
+                    messageElement.className =
+                        "chat-message user-message";
+
+
+                    messageElement.innerHTML = `
+                        <strong>YOU</strong>
+                        <br>
+                        <img
+                            src="${reader.result}"
+                            class="chat-photo"
+                            alt="Uploaded photo"
+                        >
+                    `;
+
+
+                    chatMessages.appendChild(
+                        messageElement
+                    );
+
+
+                    chatMessages.scrollTop =
+                        chatMessages.scrollHeight;
+
+                };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
 
 });
 
 
 /* =========================================
-   MOBILE NAVBAR
+   ESCAPE HTML
+   ========================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   APPLICATIONS LOADING SCREEN
+   ========================================= */
+
+window.addEventListener("load", () => {
+
+    const loadingScreen =
+        document.getElementById("loading-screen");
+
+    if (!loadingScreen) return;
+
+
+    setTimeout(() => {
+
+        loadingScreen.classList.add(
+            "loaded"
+        );
+
+    }, 900);
+
+});
+
+
+/* =========================================
+   MOBILE MENU
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    const navLinks =
-        document.querySelector(".nav-links");
 
     const navbar =
         document.querySelector(".navbar");
 
-    if (!navLinks || !navbar) return;
+    const navLinks =
+        document.querySelector(".nav-links");
+
+    if (!navbar || !navLinks) return;
 
 
     const mobileButton =
@@ -198,66 +466,50 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileButton.className =
         "mobile-menu-button";
 
-    mobileButton.innerHTML = "☰";
-
-    navbar.appendChild(mobileButton);
-
-
-    mobileButton.addEventListener("click", () => {
-
-        navLinks.classList.toggle("mobile-open");
-
-        mobileButton.classList.toggle("active");
-
-    });
+    mobileButton.innerHTML =
+        "☰";
 
 
-    navLinks.querySelectorAll("a").forEach(link => {
+    navbar.appendChild(
+        mobileButton
+    );
 
-        link.addEventListener("click", () => {
 
-            navLinks.classList.remove("mobile-open");
+    mobileButton.addEventListener(
+        "click",
+        () => {
 
-            mobileButton.classList.remove("active");
+            navLinks.classList.toggle(
+                "mobile-open"
+            );
+
+            mobileButton.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    navLinks
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navLinks.classList.remove(
+                        "mobile-open"
+                    );
+
+                    mobileButton.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
 
         });
 
-    });
-
 });
-
-
-/* =========================================
-   IMAGE PROTECTION / DRAG PREVENTION
-   ========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const images =
-        document.querySelectorAll("img");
-
-    images.forEach(image => {
-
-        image.addEventListener(
-            "dragstart",
-            event => event.preventDefault()
-        );
-
-    });
-
-});
-
-
-/* =========================================
-   CONSOLE MESSAGE
-   ========================================= */
-
-console.log(
-    "%cDRAGONX ROLEPLAY",
-    "font-size: 25px; font-weight: bold;"
-);
-
-console.log(
-    "%cWelcome to DragonX Roleplay.",
-    "font-size: 14px;"
-);
